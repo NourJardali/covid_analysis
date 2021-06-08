@@ -1,32 +1,28 @@
-list = []
+candidates = []
+votes = []
+totalVotes = []
+total = 0
 for i in range(5):
-    val = int(input("Enter a number"))
-    list.append(val)
-max = list[0]
-min = list[0]
-sum = 0
+    name = input("Enter the last name of candidate: ")
+    vote = int(input("Enter number of votes received: "))
+    candidates.append(name)
+    votes.append(vote)
+    total = total + vote
+
 for i in range(5):
-    if list[i] < min:
-        min = list[i]
-    if list[i] > max:
-        max = list[i]
-    sum = sum + list[i]
-print("max = ",max)
-print("min = ",min)
-print("total = ",sum)
-print("first element: ",list[0])
-print("second element: ",list[1])
-print("third element: ",list[2])
-print("last element: ",list[4])
-for i in range(2):
-    val = int(input("Enter a number"))
-    list.append(val)
-print("length of list = ",len(list))
-list.sort()
-print("list after sorting")
-for i in list:
-    print(i)
-print("searching for 5")
-for i in list:
-    if i == 5:
-        print("Found")
+    percentage = (votes[i] / total) * 100
+    percentage = round(percentage, 2)
+    totalVotes.append(percentage)
+    print("Candidate :")
+    print("Last name: ",candidates[i])
+    print("Votes Received: ",votes[i])
+    print("\"%\" of Total votes: ",percentage)
+
+max = totalVotes[0]
+index = 0
+for i in range(5):
+    if max < totalVotes[i]:
+        max = totalVotes[i]
+        index = i
+
+print("The winner of the election is ",candidates[index])
